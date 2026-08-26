@@ -1,0 +1,67 @@
+# Ignore everything by default. Only the source and assets required to build
+# the public course website are explicitly included below.
+/*
+
+# Repository documentation and ignore rules
+!/.gitignore
+!/README.md
+
+# OpenAI Sites build metadata required by vite.config.ts
+!/.openai/
+!/.openai/hosting.json
+
+# Year-specific course pages and data
+!/2026/
+!/2026/**
+!/2027/
+!/2027/**
+
+# Shared application and worker source
+!/app/
+!/app/**
+!/worker/
+!/worker/**
+
+# Public assets, excluding superseded social cards
+!/public/
+!/public/**
+/public/og.png
+/public/2026/og.png
+
+# Tests
+!/tests/
+!/tests/**
+
+# Project and tool configuration required for a clean install and build
+!/package.json
+!/package-lock.json
+!/tsconfig.json
+!/next-env.d.ts
+!/next.config.ts
+!/vite.config.ts
+!/eslint.config.mjs
+!/postcss.config.mjs
+
+# Never commit local secrets, caches, logs, or editor state, including copies
+# accidentally placed inside an included directory.
+**/.env*
+**/.dev.vars
+**/.dev.vars.*
+**/.DS_Store
+**/*.pem
+**/*.key
+**/*.log
+**/*.swp
+**/*~
+**/.vscode/
+**/.idea/
+**/node_modules/
+**/.next/
+**/.vinext/
+**/.wrangler/
+**/dist/
+**/out/
+**/coverage/
+**/outputs/
+**/work/
+**/*.tsbuildinfo
