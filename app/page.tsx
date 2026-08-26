@@ -1,13 +1,4 @@
-import { redirect } from "next/navigation";
-
-const availableYears = [2026, 2027];
-
-export default function Home() {
-  const currentYear = new Date().getFullYear();
-  const defaultYear =
-    availableYears.find((year) => year === currentYear) ??
-    [...availableYears].reverse().find((year) => year < currentYear) ??
-    availableYears[0];
-
-  redirect(`/${defaultYear}`);
-}
+// GitHub Pages cannot perform server-side redirects. Render the current
+// offering directly at the repository root so the default URL remains useful.
+export const dynamic = "force-static";
+export { default, generateMetadata } from "../2026/page";

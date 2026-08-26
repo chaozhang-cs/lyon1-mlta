@@ -30,6 +30,20 @@ npm run dev
 
 Use `npm run build` to create and validate the production build.
 
+## GitHub Pages
+
+The repository includes a GitHub Actions workflow that publishes a static
+export to `https://chaozhang-cs.github.io/lyon1-mlta/`. Run the same build and
+verification locally with:
+
+```bash
+npm run test:pages
+```
+
+After pushing to `main`, set **Settings → Pages → Build and deployment →
+Source** to **GitHub Actions**. Every later push to `main` will rebuild and
+publish the site automatically.
+
 To update one edition, work only in its numbered directory. To add a future
 edition, copy the structure of an existing year, add its thin route adapter in
 `app/<year>/page.tsx`, and add the year to `availableYears` in `app/page.tsx`.

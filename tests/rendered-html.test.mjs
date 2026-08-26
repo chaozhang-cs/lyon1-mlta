@@ -17,10 +17,11 @@ async function render(pathname) {
   );
 }
 
-test("root redirects to the current 2026 offering", async () => {
+test("root renders the current 2026 offering", async () => {
   const response = await render("/");
-  assert.equal(response.status, 307);
-  assert.match(response.headers.get("location") ?? "", /\/2026$/);
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /M2 DISS · Fall 2026 · 6 ECTS/);
 });
 
 test("server-renders the complete 2026 course page", async () => {
@@ -64,7 +65,7 @@ test("server-renders the complete 2026 course page", async () => {
   assert.doesNotMatch(html, /office hours|Links to be added/i);
   assert.doesNotMatch(html, /Understand the whole system|Seven parts\. One continuous technical story|Evaluation appears early|Lectures run in three focused|Experiments over anecdotes|Every lab includes a hypothesis|Evidence, implementation, and critical judgment|The essentials/);
   assert.match(html, /alt="Université Claude Bernard Lyon 1"/);
-  assert.match(html, /http:\/\/localhost\/2026\/og-v2\.png/);
+  assert.match(html, /http:\/\/localhost(?::3000)?\/2026\/og-v2\.png/);
   assert.doesNotMatch(html, /Stanford|codex-preview|react-loading-skeleton/i);
 });
 

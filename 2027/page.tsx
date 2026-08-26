@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { COURSE_BASE_NAME, COURSE_NAME } from "../app/course-info";
+import { siteRoute } from "../app/site-metadata";
 import { course2027 } from "./course-data";
 
 const title = `${COURSE_NAME} · ${course2027.year}`;
@@ -18,7 +19,7 @@ export default function Course2027() {
   return (
     <main id="top" className="future-page">
       <header className="site-header">
-        <Link className="brand" href="/2027" aria-label="MLTA 2027 home">
+        <Link className="brand" href={siteRoute("/2027")} aria-label="MLTA 2027 home">
           <span className="brand-mark">MLTA</span>
           <span className="brand-context">
             <span className="brand-course-name">{COURSE_BASE_NAME}</span>
@@ -26,8 +27,8 @@ export default function Course2027() {
           </span>
         </Link>
         <nav className="year-switcher" aria-label="Course year">
-          <Link className="year-link" href="/2026">2026</Link>
-          <Link className="year-link active" href="/2027" aria-current="page">2027</Link>
+          <Link className="year-link" href={siteRoute("/2026")}>2026</Link>
+          <Link className="year-link active" href={siteRoute("/2027")} aria-current="page">2027</Link>
         </nav>
       </header>
 
@@ -41,7 +42,7 @@ export default function Course2027() {
             system-level perspective while the timetable and annually rotating
             frontier topic are confirmed.
           </p>
-          <Link className="button button-primary" href="/2026">
+          <Link className="button button-primary" href={siteRoute("/2026")}>
             View the 2026 course
           </Link>
         </div>

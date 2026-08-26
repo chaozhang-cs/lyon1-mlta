@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { COURSE_BASE_NAME, COURSE_NAME } from "../app/course-info";
 import { parts, practicalActivities, sessions, teachingDays } from "./course-data";
-import { requestOrigin } from "../app/site-metadata";
+import { publicAssetPath, requestOrigin, siteRoute } from "../app/site-metadata";
 
 export async function generateMetadata(): Promise<Metadata> {
   const origin = await requestOrigin();
@@ -39,7 +39,7 @@ export default function Course2026() {
       </div>
 
       <header className="site-header">
-        <Link className="brand" href="/2026" aria-label="MLTA 2026 home">
+        <Link className="brand" href={siteRoute("/2026")} aria-label="MLTA 2026 home">
           <span className="brand-mark">MLTA</span>
           <span className="brand-context">
             <span className="brand-course-name">{COURSE_BASE_NAME}</span>
@@ -55,8 +55,8 @@ export default function Course2026() {
           <a href="#logistics">Logistics</a>
         </nav>
         <nav className="year-switcher" aria-label="Course year">
-          <Link className="year-link active" href="/2026" aria-current="page">2026</Link>
-          <Link className="year-link" href="/2027">2027</Link>
+          <Link className="year-link active" href={siteRoute("/2026")} aria-current="page">2026</Link>
+          <Link className="year-link" href={siteRoute("/2027")}>2027</Link>
         </nav>
       </header>
 
@@ -82,7 +82,7 @@ export default function Course2026() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="course-logo"
-            src="/lyon1-logo.png"
+            src={publicAssetPath("/lyon1-logo.png")}
             alt="Université Claude Bernard Lyon 1"
             width={154}
             height={171}
@@ -102,7 +102,7 @@ export default function Course2026() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="instructor-photo"
-          src="/instructor-chao-zhang.jpg"
+          src={publicAssetPath("/instructor-chao-zhang.jpg")}
           alt="Portrait of Chao Zhang"
           width={168}
           height={168}
