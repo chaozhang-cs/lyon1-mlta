@@ -249,7 +249,7 @@ export default function Course2026() {
 
         <div className="schedule-note">
           <span className="tbc-badge">TBC</span>
-          <p>The dates, times, rooms, and morning session mapping are confirmed from the official timetable. The allocation of the twelve practical activities across the eight afternoon blocks remains to be confirmed.</p>
+          <p>The dates, times, rooms, and morning session mapping are confirmed from the official timetable. The topics of the remaining seven practical activities remain to be confirmed.</p>
         </div>
       </section>
 

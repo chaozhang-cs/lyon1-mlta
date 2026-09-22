@@ -61,7 +61,7 @@ export const sessions: Session[] = [
 export const teachingDays: TeachingDay[] = [
   { date: "09 Sep", isoDate: "2026-09-09", room: "TD001", sessionNumbers: [1, 2, 3] },
   { date: "16 Sep", isoDate: "2026-09-16", room: "TD001", sessionNumbers: [4, 5, 6] },
-  { date: "23 Sep", isoDate: "2026-09-23", room: "TD005", sessionNumbers: [7, 8, 9], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
+  { date: "23 Sep", isoDate: "2026-09-23", room: "TD005", sessionNumbers: [7, 8, 9], practical: { time: "14:00–17:00", note: "Lab 01 · Understanding LLM / Transformers" } },
   { date: "30 Sep", isoDate: "2026-09-30", room: "TD005", sessionNumbers: [10, 11, 12], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
   { date: "14 Oct", isoDate: "2026-10-14", room: "TD001", sessionNumbers: [13, 14, 15], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
   { date: "21 Oct", isoDate: "2026-10-21", room: "TD005", sessionNumbers: [16, 17, 18], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
@@ -72,4 +72,7 @@ export const teachingDays: TeachingDay[] = [
   { date: "02 Dec", isoDate: "2026-12-02", room: "TD005", sessionNumbers: [31, 32, 33], practical: { time: "14:00–17:15", note: "Lab / project block · activity mapping TBC" } },
 ];
 
-export const practicalActivities = Array.from({ length: 12 }, () => "TBC");
+export const practicalActivities = [
+  "Understanding LLM / Transformers",
+  ...Array.from({ length: 7 }, () => "TBC"),
+];
