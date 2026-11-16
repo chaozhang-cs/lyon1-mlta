@@ -10,6 +10,7 @@ export type TeachingDay = {
   room: string;
   sessionNumbers: number[];
   practical?: { time: string; note: string };
+  holiday?: string;
 };
 
 export const parts = [
@@ -63,17 +64,20 @@ export const teachingDays: TeachingDay[] = [
   { date: "16 Sep", isoDate: "2026-09-16", room: "TD001", sessionNumbers: [4, 5, 6] },
   { date: "23 Sep", isoDate: "2026-09-23", room: "TD005", sessionNumbers: [7, 8, 9], practical: { time: "14:00–17:00", note: "Lab 01 · Understanding LLM / Transformers" } },
   { date: "30 Sep", isoDate: "2026-09-30", room: "TD005", sessionNumbers: [10, 11, 12], practical: { time: "14:00–17:00", note: "Lab 02 · Prompt Engineering and Systematic Evaluation" } },
-  { date: "14 Oct", isoDate: "2026-10-14", room: "TD001", sessionNumbers: [13, 14, 15], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
-  { date: "21 Oct", isoDate: "2026-10-21", room: "TD005", sessionNumbers: [16, 17, 18], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
+  { date: "14 Oct", isoDate: "2026-10-14", room: "TD001", sessionNumbers: [13, 14, 15], practical: { time: "14:00–17:00", note: "Lab 03 · Fine-Tuning and Forgetting" } },
+  { date: "21 Oct", isoDate: "2026-10-21", room: "TD005", sessionNumbers: [16, 17, 18], practical: { time: "14:00–17:00", note: "Lab 04 · Model Editing" } },
   { date: "04 Nov", isoDate: "2026-11-04", room: "TD001", sessionNumbers: [19, 20, 21] },
-  { date: "11 Nov", isoDate: "2026-11-11", room: "TD001", sessionNumbers: [22, 23, 24], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
-  { date: "18 Nov", isoDate: "2026-11-18", room: "TD005", sessionNumbers: [25, 26, 27], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
-  { date: "25 Nov", isoDate: "2026-11-25", room: "TD005", sessionNumbers: [28, 29, 30], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
-  { date: "02 Dec", isoDate: "2026-12-02", room: "TD005", sessionNumbers: [31, 32, 33], practical: { time: "14:00–17:15", note: "Lab / project block · activity mapping TBC" } },
+  { date: "11 Nov", isoDate: "2026-11-11", room: "TD001", sessionNumbers: [], holiday: "Armistice Day (public holiday)" },
+  { date: "18 Nov", isoDate: "2026-11-18", room: "TD005", sessionNumbers: [22, 23, 24], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
+  { date: "25 Nov", isoDate: "2026-11-25", room: "TD005", sessionNumbers: [25, 26, 27], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
+  { date: "02 Dec", isoDate: "2026-12-02", room: "TD005", sessionNumbers: [28, 29, 30], practical: { time: "14:00–17:15", note: "Lab / project block · activity mapping TBC" } },
+  { date: "09 Dec", isoDate: "2026-12-09", room: "TBC", sessionNumbers: [31, 32, 33], practical: { time: "14:00–17:00", note: "Lab / project block · activity mapping TBC" } },
 ];
 
 export const practicalActivities = [
   "Understanding LLM / Transformers",
   "Prompt Engineering and Systematic Evaluation",
-  ...Array.from({ length: 6 }, () => "TBC"),
+  "Fine-Tuning and Forgetting",
+  "Model Editing",
+  ...Array.from({ length: 4 }, () => "TBC"),
 ];

@@ -531,6 +531,8 @@ h1 span { display: block; color: var(--blue); }
 .practical-block p, .exam-block p { margin: 0; color: #4d5360; font-size: 0.96rem; line-height: 1.65; }
 .no-afternoon { display: flex; align-items: center; color: #777d88; font-size: 0.88rem; line-height: 1.5; font-style: italic; }
 .exam-row { background: var(--ink); color: var(--white); }
+.holiday-row { color: #777d88; }
+.holiday-block p { margin: 0; color: #777d88; font-size: 0.96rem; line-height: 1.65; }
 .exam-row .schedule-date > span, .exam-row .block-meta, .exam-row .exam-block p, .exam-row .no-afternoon { color: #b8c2d4; }
 .exam-row .schedule-block { border-left-color: rgba(255,255,255,0.18); }
 .schedule-note { margin-top: 24px; padding: 22px 24px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; background: #e8e4da; }

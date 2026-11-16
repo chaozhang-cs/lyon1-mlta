@@ -29,13 +29,21 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const sessionByNumber = new Map(sessions.map((session) => [session.number, session]));
 
+function venue(room: string) {
+  return room === "TBC" ? "Room TBC" : `Nautibus ${room} · Ground floor`;
+}
+
+const teachingWeekByDate = new Map(
+  teachingDays.filter((day) => !day.holiday).map((day, index) => [day.isoDate, index + 1]),
+);
+
 export default function Course2026() {
   return (
     <main id="top">
       <div className="announcement">
         <span>2026 schedule published</span>
         <span className="announcement-separator" aria-hidden="true">•</span>
-        <span>Last updated 25 August 2026</span>
+        <span>Last updated 16 November 2026</span>
       </div>
 
       <header className="site-header">
@@ -201,16 +209,27 @@ export default function Course2026() {
         </div>
 
         <ol className="schedule-list">
-          {teachingDays.map((day, index) => (
+          {teachingDays.map((day) => day.holiday ? (
+            <li className="schedule-row holiday-row" key={day.isoDate}>
+              <div className="schedule-date">
+                <time dateTime={day.isoDate}>{day.date}</time>
+                <span>Wednesday · No class</span>
+              </div>
+              <div className="schedule-block holiday-block">
+                <p><strong>{day.holiday}</strong><br />No lecture or practical. Later sessions move back by one week.</p>
+              </div>
+              <div className="schedule-block no-afternoon"><span>No afternoon block</span></div>
+            </li>
+          ) : (
             <li className="schedule-row" key={day.isoDate}>
               <div className="schedule-date">
                 <time dateTime={day.isoDate}>{day.date}</time>
-                <span>Wednesday · Week {index + 1}</span>
+                <span>Wednesday · Week {teachingWeekByDate.get(day.isoDate)}</span>
               </div>
               <div className="schedule-block lecture-block">
                 <div className="block-meta">
                   <span>09:45–13:00</span>
-                  <span>Nautibus {day.room} · Ground floor</span>
+                  <span>{venue(day.room)}</span>
                 </div>
                 <ol className="session-list">
                   {day.sessionNumbers.map((number) => {
@@ -226,7 +245,7 @@ export default function Course2026() {
               </div>
               {day.practical ? (
                 <div className="schedule-block practical-block">
-                  <div className="block-meta"><span>{day.practical.time}</span><span>Nautibus {day.room} · Ground floor</span></div>
+                  <div className="block-meta"><span>{day.practical.time}</span><span>{venue(day.room)}</span></div>
                   <p>{day.practical.note}</p>
                 </div>
               ) : (
@@ -249,7 +268,7 @@ export default function Course2026() {
 
         <div className="schedule-note">
           <span className="tbc-badge">TBC</span>
-          <p>The dates, times, rooms, and morning session mapping are confirmed from the official timetable. The topics of the remaining seven practical activities remain to be confirmed.</p>
+          <p>No class on 11 November (public holiday), so sessions 22–33 move back by one week and an extra day is added on 09 December. The room for 09 December and the topics of the remaining four practical activities remain to be confirmed.</p>
         </div>
       </section>
 
