@@ -532,6 +532,7 @@ h1 span { display: block; color: var(--blue); }
 .no-afternoon { display: flex; align-items: center; color: #777d88; font-size: 0.88rem; line-height: 1.5; font-style: italic; }
 .exam-row { background: var(--ink); color: var(--white); }
 .holiday-row { color: #777d88; }
+.morning-event { margin: 0; color: #4d5360; font-size: 0.96rem; line-height: 1.65; }
 .holiday-block p { margin: 0; color: #777d88; font-size: 0.96rem; line-height: 1.65; }
 .exam-row .schedule-date > span, .exam-row .block-meta, .exam-row .exam-block p, .exam-row .no-afternoon { color: #b8c2d4; }
 .exam-row .schedule-block { border-left-color: rgba(255,255,255,0.18); }

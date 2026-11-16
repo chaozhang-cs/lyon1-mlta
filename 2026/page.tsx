@@ -29,8 +29,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const sessionByNumber = new Map(sessions.map((session) => [session.number, session]));
 
+const roomFloors: Record<string, string> = {
+  TD001: "Ground floor",
+  TD005: "Ground floor",
+};
+
 function venue(room: string) {
-  return room === "TBC" ? "Room TBC" : `Nautibus ${room} · Ground floor`;
+  const floor = roomFloors[room];
+  return floor ? `Nautibus ${room} · ${floor}` : `Nautibus ${room}`;
 }
 
 const teachingWeekByDate = new Map(
@@ -77,8 +83,8 @@ export default function Course2026() {
           </h1>
           <p className="hero-intro">
             Modern machine learning through foundation models—following the
-            full path from generation and evaluation to retrieval, agents,
-            systems, and multimodality.
+            full path from generation and evaluation to retrieval, reasoning,
+            and agents.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#schedule">View course schedule</a>
@@ -126,7 +132,7 @@ export default function Course2026() {
       </section>
 
       <section className="stat-strip" aria-label="Course at a glance">
-        <div><strong>33</strong><span>focused sessions</span></div>
+        <div><strong>20</strong><span>focused sessions</span></div>
         <div><strong>36h</strong><span>lectures</span></div>
         <div><strong>24h</strong><span>labs &amp; project</span></div>
         <div><strong>50/50</strong><span>exam / practical</span></div>
@@ -145,8 +151,8 @@ export default function Course2026() {
             <p>
               We move through the complete lifecycle of an LLM system: how
               text becomes tokens and logits, how models are trained and
-              aligned, how external knowledge is retrieved, how agents plan
-              and act, and how the resulting systems are evaluated and served.
+              aligned, how external knowledge is retrieved, how agents plan,
+              act, and improve, and how the resulting systems are evaluated.
             </p>
             <p>
               Mechanisms, empirical evidence, controlled comparison, failure
@@ -159,7 +165,7 @@ export default function Course2026() {
           <article className="info-callout">
             <span className="callout-number">01</span>
             <h3>What you will be able to do</h3>
-            <p>Trace a decoder-only Transformer, design reproducible evaluations, build trustworthy RAG and agent systems, and reason about training and serving trade-offs.</p>
+            <p>Trace a decoder-only Transformer, design reproducible evaluations, build trustworthy RAG and agent systems, and explain how agents improve from feedback.</p>
           </article>
           <article className="info-callout accent-callout">
             <span className="callout-number">02</span>
@@ -231,6 +237,9 @@ export default function Course2026() {
                   <span>09:45–13:00</span>
                   <span>{venue(day.room)}</span>
                 </div>
+                {day.morningEvent ? (
+                  <p className="morning-event"><strong>{day.morningEvent.title}</strong><br />{day.morningEvent.note}</p>
+                ) : (
                 <ol className="session-list">
                   {day.sessionNumbers.map((number) => {
                     const session = sessionByNumber.get(number);
@@ -242,10 +251,11 @@ export default function Course2026() {
                     ) : null;
                   })}
                 </ol>
+                )}
               </div>
               {day.practical ? (
                 <div className="schedule-block practical-block">
-                  <div className="block-meta"><span>{day.practical.time}</span><span>{venue(day.room)}</span></div>
+                  <div className="block-meta"><span>{day.practical.time}</span><span>{venue(day.practical.room ?? day.room)}</span></div>
                   <p>{day.practical.note}</p>
                 </div>
               ) : (
@@ -260,15 +270,15 @@ export default function Course2026() {
             </div>
             <div className="schedule-block exam-block">
               <div className="block-meta"><span>09:45–13:00</span><span>Nautibus TD005 · Ground floor</span></div>
-              <p><strong>Written examination</strong><br />Coverage and format details to be confirmed.</p>
+              <p><strong>Written examination</strong><br />Covers Sessions 01–20. Format details to be confirmed.</p>
             </div>
             <div className="schedule-block no-afternoon"><span>End of course</span></div>
           </li>
         </ol>
 
         <div className="schedule-note">
-          <span className="tbc-badge">TBC</span>
-          <p>No class on 11 November (public holiday), so sessions 22–33 move back by one week and an extra day is added on 09 December. The room for 09 December and the topics of the remaining four practical activities remain to be confirmed.</p>
+          <span className="tbc-badge">Note</span>
+          <p>No class on 11 November (public holiday). The programme runs two sessions per morning, and the morning of 09 December is reserved for project presentations.</p>
         </div>
       </section>
 
